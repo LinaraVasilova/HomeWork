@@ -1,188 +1,149 @@
-﻿// Домашняя работа. Семинар 3
-// Задача 19. Напишите программу, которая принимает на вход пятизначное число 
-// и проверяет, является ли оно палиндромом.
-// 14212 -> нет
-// 12821 -> да
-// 23432 -> да
+﻿// Задача 47. Задайте двумерный массив размером m×n, заполненный 
+// случайными вещественными числами.
+// m = 3, n = 4.
+// 0,5 7 -2 -0,2
+// 1 -3,3 8 -9,9
+// 8 7,8 -7,1 9
 
-// int num,r,sum=0,i;
-// Console.Write("Введите пятизначное число: ");
-// num = Convert.ToInt32(Console.ReadLine());
-// if(num>9999 && num<100000)
+
+// Console.WriteLine("Введите количество строк");
+// int linesVol = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите количество столбцов");
+// int columnsVol = Convert.ToInt32(Console.ReadLine());
+// double[,] numbers = new double[linesVol, columnsVol];
+// FillArrayRandomNumbers(numbers);
+// PrintArray(numbers);
+
+// void FillArrayRandomNumbers(double[,] array)
 // {
-// for(i=num;num!=0;num=num/10)
-// {
-// r=num % 10;
-// sum=sum*10+r;
-// }
-// if(i==sum)
-// Console.Write($"да");
-// else
-// Console.Write($"нет");
-// } else
-// Console.Write("Введите пятизначное число! ");
-
-// int num, r, sum=0, t;
-// Console.Write("Введите число: ");
-// num = Convert.ToInt32(Console.ReadLine());
-// for(t=num; num!=0; num=num/10)
-// {
-//     r=num % 10;
-//     sum = sum*10+r;
-// }
-// if(t==sum)
-//     Console.Write("{0} это палиндром", t);
-// else
-//     Console.Write("{0} это НЕ палиндром", t);
-
-
-// Задача 21. Напишите программу, которая принимает на вход координаты двух точек
-// и находит расстояние между ними в 3D пространстве.
-// A (3,6,8); B (2,1,-7), -> 15.84
-// A (7,-5, 0); B (1,-1,9) -> 11.53
-
-// double getDistance(double xa, double ya, double za, double xb, double yb, double zb)
-// {
-//     return Math.Sqrt(Math.Pow(xb - xa, 2) + Math.Pow(yb - ya, 2)  + Math.Pow(zb - za, 2));
-// }
-// Console.Write("Введите координату X первой точки: ");
-// double xa = Convert.ToDouble(Console.ReadLine());
-// Console.Write("Введите координату Y первой точки: ");
-// double ya = Convert.ToDouble(Console.ReadLine());
-// Console.Write("Введите координату Z первой точки: ");
-// double za = Convert.ToDouble(Console.ReadLine());
-
-// Console.Write("Введите координату X второй точки: ");
-// double xb = Convert.ToDouble(Console.ReadLine());
-// Console.Write("Введите координату Y второй точки: ");
-// double yb = Convert.ToDouble(Console.ReadLine());
-// Console.Write("Введите координату Z второй точки: ");
-// double zb = Convert.ToDouble(Console.ReadLine());
-
-// Console.WriteLine("Расстояние между точками: " + Math.Round(getDistance(xa, ya, za, xb, yb, zb), 2));
-
-
-
-
-// Задача 23. Напишите программу, которая принимает на вход число (N) и выдаёт 
-// таблицу кубов чисел от 1 до N.
-// 3 -> 1, 8, 27
-// 5 -> 1, 8, 27, 64, 125
-
-// void cubeTable(int n)
-// {
-//     int currentNumber = 1;
-//     while (currentNumber <= n)
+//     for (int i = 0; i < array.GetLength(0); i++)
 //     {
-//         Console.WriteLine(currentNumber + " - " + (currentNumber * currentNumber*currentNumber));
-//         currentNumber ++;
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             array[i, j] = Convert.ToDouble(new Random().Next(-100, 100)) / 10;
+//         }
 //     }
 // }
-// Console.Write ("Введите число ");
+
+// void PrintArray(double[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         Console.Write("[ ");
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             Console.Write(array[i, j] + " ");
+//         }
+//         Console.Write("]");
+//         Console.WriteLine("");
+//     }
+// }
+
+// Задача 50. Напишите программу, которая на вход принимает позиции элемента 
+// в двумерном массиве, и возвращает значение этого элемента или же указание, 
+// что такого элемента нет.
+
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 1 7 -> элемента с такими индексами в массиве нет
+
+// Console.WriteLine("введите номер строки");
 // int n = Convert.ToInt32(Console.ReadLine());
-// if (n>0)
-//     cubeTable(n);
+// Console.WriteLine("введите номер столбца");
+// int m = Convert.ToInt32(Console.ReadLine());
+// int [,] numbers = new int [10,10];
+// FillArrayRandomNumbers(numbers);
+// if (n > numbers.GetLength(0) || m > numbers.GetLength(1))
+// {
+//     Console.WriteLine("такого элемента нет");
+// }
 // else
-//     Console.Write ("Введите число больше 0 ");
-
-
-// Домашняя работа. Семинар 5
-// Задача 34: Задайте массив заполненный случайными положительными трёхзначными 
-// числами. Напишите программу, которая покажет количество чётных чисел в массиве.
-
-// [345, 897, 568, 234] -> 2
-
-// int[] CreateRandomArray(int size, int minValue, int maxValue)
 // {
-//     Random rnd = new Random();
-//     int[] result = new int[size];
-
-//     for(int i=0; i < result.Length; i++)
-//         result[i] = rnd.Next(minValue, maxValue + 1);
-    
-//     return result;
+//     Console.WriteLine($"значение элемента {n} строки и {m} столбца равно {numbers[n-1,m-1]}");
 // }
 
+// PrintArray(numbers);
 
-// void FindEven(int[]newArray)
+// void FillArrayRandomNumbers(int[,] array)
 // {
-//     int even = 0;
-//     for (int i = 0; i < newArray.Length; i++)
-//     {
-//         if (newArray[i] % 2 == 0)
-//         even = even +1;
-//     }
-//     Console.Write($"Количество четных числе в массиве: {even}");
-// }
-
-
-// Задача 36: Задайте одномерный массив, заполненный случайными числами. 
-// Найдите сумму элементов, стоящих на нечётных позициях.
-// [3, 7, 23, 12] -> 19
-// [-4, -6, 89, 6] -> 0
-
-// int [] GetArray(int size, int minValue, int maxValue)
-// {
-//     Random rnd = new Random(); // переменная генератор случайных чисел
-//     int[] result = new int[size];
-//     for(int i=0; i < result.Length; i++)
-//     {
-//         result[i] = rnd.Next(minValue, maxValue + 1);
-//     }
-//     return result;
-// }
-
-
-// void FindOdd(int[] MyArray)
-// {
-//     int odd = 0;
-//     for(int i = 1; i < MyArray.Length; i=i+2)
-//     {
-//         odd=odd+MyArray.Length; i=i+2;
-        
-//     }
-//    Console.WriteLine($"Сумма чисел на нечетных позициях {odd}");
-// }
-
-// Задача 38: Задайте массив вещественных чисел. Найдите разницу между 
-// максимальным и минимальным элементов массива.
-// [3 7 22 2 78] -> 76
-
-// using static System.Console;
-// Clear();
-// Write("Введите размер массива: ");
-// int length=int.Parse(ReadLine()!);
-// Write("Введите минимальное значение массива: ");
-// int min= int.Parse(ReadLine()!);
-// Write("Введите максимальное значение массива: ");
-// int max= int.Parse(ReadLine()!);
-// int[]Array = GetArray(length, min, max);
-// WriteLine($"[{string.Join(",", Array)}]);
-// FindDifference(Array, max, min);
-
-// int[] GetArray(int size, int minValue, maxValue)
-// {
-//     Random rnd = new Random();
-//         int[] result = new int[size];
-//     for(int i=0; i < result.Length; i++)
-//     {
-//         result[i] = rnd.Next(minValue, maxValue + 1);
-//     }
-//     return result;
-// }
-
-// void FindDifference(int[] MyArray, int minVal, int maxVal)
-// {
-//     for(int i = 0; i < MyArray.Length; i=++)
-//     {
-//         if(MyArray[i]<minVal)
-//         {
-//             minVal=MyArray[i];
+//     for (int i = 0; i < array.GetLength(0); i++)
+//         {        
+//             for (int j = 0; j < array.GetLength(1); j++)
+//             {
+//                 array [i,j] = new Random().Next(-100, 100)/10;
+//             }   
 //         }
-//         if(MyArray[i]>maxVal)
+// }
+
+// void PrintArray(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         Console.Write("[ ");
+//         for (int j = 0; j < array.GetLength(1); j++)
 //         {
-//             maxVal=MyArray[i];
+//             Console.Write(array[i,j] + " ");
+//         }   
+//         Console.Write("]");
+//         Console.WriteLine(""); 
+//     }
+// }
+
+
+// Задача 52. Задайте двумерный массив из целых чисел. 
+// Найдите среднее арифметическое элементов в каждом столбце.
+
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+// Console.WriteLine("введите количество строк");
+// int n = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("введите количество столбцов");
+// int m = Convert.ToInt32(Console.ReadLine());
+
+// int[,] numbers = new int[n, m];
+// FillArrayRandomNumbers(numbers);
+
+// for (int j = 0; j < numbers.GetLength(1); j++)
+// {
+//     double avarage = 0;
+//     for (int i = 0; i < numbers.GetLength(0); i++)
+//     {
+//         avarage = (avarage + numbers[i, j]);
+//     }
+//     avarage = avarage / n;
+//     Console.Write(avarage + "; ");
+// }
+// Console.WriteLine();
+// PrintArray(numbers);
+
+// void FillArrayRandomNumbers(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             array[i, j] = new Random().Next(0, 10);
 //         }
 //     }
-//    Console.WriteLine($"Разница {maxVal-minVal}");
+// }
+
+// void PrintArray(int[,] array)
+// {
+
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         Console.Write("[ ");
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             Console.Write(array[i, j] + " ");
+//         }
+//         Console.Write("]");
+//         Console.WriteLine("");
+//     }
 // }
